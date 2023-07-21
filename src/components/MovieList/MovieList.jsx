@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 
 
 function MovieList() {
@@ -18,6 +19,11 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+    // Creating function that will lead to further details on movie
+    const handleCard = (movie) => {
+        console.log('Card clicked with id: ', movie.id);
+    }
+
     return (
         <div>
             <h1>MovieList</h1>
@@ -25,16 +31,16 @@ function MovieList() {
                 {movies.map(movie => {
                     return (
                         <Card key={movie.id} sx={{ width: '25%', height: '30%', padding: 2}}>
-            
+                            <CardActionArea onClick={()=>handleCard(movie)}>              
                                 <CardMedia
                                     sx={{ height: 400 }}
                                     image={movie.poster}
-                                    alt={movie.title}
+                                    alt={movie.title}                
                                      />
                                 <Typography>
                                     {movie.title}
                                 </Typography>
-                  
+                             </CardActionArea>
                         </Card>
 
                     );
