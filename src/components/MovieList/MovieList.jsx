@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './MovieList.css'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,6 +13,9 @@ import { CardActionArea } from '@mui/material';
 
 function MovieList() {
 
+    //importing useHistroy to move to history page
+    const history = useHistory();
+
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
 
@@ -22,6 +26,8 @@ function MovieList() {
     // Creating function that will lead to further details on movie
     const handleCard = (movie) => {
         console.log('Card clicked with id: ', movie.id);
+        dispatch({ type: 'MOVIE_DETAILS', payload: movie.id})
+        history.push('/details')
     }
 
     return (
