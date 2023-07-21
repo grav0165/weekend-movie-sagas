@@ -3,19 +3,20 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 // Creating a new GET request
-router.get('/:id', (req, res) => {
-    const queryParams = req.param.id
+router.get('/details/:id', (req, res) => {
+    const queryParams = req.params.id
     const sqlQuery = `
-    SELECT "movies"."title", "genres"."name" 
+    SELECT "movies"."title", "genres"."name", "movies"."description", "movies"."poster"
     FROM "movies"
     JOIN "movies_genres" ON "movies_genres"."movie_id" = "movies"."id"
     JOIN "genres" ON "genres"."id" = "movies_genres"."genre_id"
     WHERE "movies"."id"=$1
-    GROUP BY "movies"."title", "genres"."name"; 
+    GROUP BY "movies"."title", "genres"."name", "movies"."description", "movies"."poster" 
     `
     pool.query(sqlQuery, [queryParams])
     .then( result => {
       res.send(result.rows);
+      console.log('Server request completed: ', result.rows);
     })
     .catch(error => {
       console.log('Error in GET of DETAILS: ', error);
