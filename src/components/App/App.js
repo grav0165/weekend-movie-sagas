@@ -4,6 +4,7 @@ import './App.css';
 // Importing different components here
 import MovieList from '../MovieList/MovieList';
 import Header from '../Header/Header';
+import Details from '../Details/Details';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Route>
         
         {/* Details page */}
+        <Route path="/details" exact>
+          <Details />
+        </Route>
 
         {/* Add Movie page */}
       </Router>
