@@ -2,6 +2,27 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// Creating a new GET request
+router.get('/:id', (req, res) => {
+    const queryParams = req.param.id
+    const sqlQuery = `
+    SELECT "movies"."title", "genres"."name" 
+    FROM "movies"
+    JOIN "movies_genres" ON "movies_genres"."movie_id" = "movies"."id"
+    JOIN "genres" ON "genres"."id" = "movies_genres"."genre_id"
+    WHERE "movies"."id"=$1
+    GROUP BY "movies"."title", "genres"."name"; 
+    `
+    pool.query(sqlQuery, [queryParams])
+    .then( result => {
+      res.send(result.rows);
+    })
+    .catch(error => {
+      console.log('Error in GET of DETAILS: ', error);
+      res.sendStatus(500);
+    })
+})
+
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
@@ -13,7 +34,6 @@ router.get('/', (req, res) => {
       console.log('ERROR: Get all movies', err);
       res.sendStatus(500)
     })
-
 });
 
 router.post('/', (req, res) => {
