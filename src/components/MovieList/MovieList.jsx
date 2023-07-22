@@ -9,6 +9,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import {Paper} from '@mui/material';
+import { Box } from '@mui/material';
 
 
 function MovieList() {
@@ -26,29 +28,33 @@ function MovieList() {
     // Creating function that will lead to further details on movie
     const handleCard = (movie) => {
         console.log('Card clicked with id: ', movie.id);
+        // Dispatch sending the movie ID to do a SQL query
         dispatch({ type: 'MOVIE_DETAILS', payload: movie.id})
+        // history.push to go to the details page
         history.push('/details')
     }
 
     return (
         <div>
-            <h1>MovieList</h1>
+            <h1>Movies in Your List</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <Card key={movie.id} sx={{ width: '25%', height: '30%', padding: 2}}>
+                        
+               
+                        <Card key={movie.id} elevation={7} sx={{ width: '25%', height: '30%', minWidth: 300, padding: 2, margin: 2, backgroundColor: '#050505', color: 'white'}}>
                             <CardActionArea onClick={()=>handleCard(movie)}>              
                                 <CardMedia
                                     sx={{ height: 400 }}
                                     image={movie.poster}
                                     alt={movie.title}                
                                      />
-                                <Typography>
+                                <Typography sx={{ marginTop: 1 font}}>
                                     {movie.title}
                                 </Typography>
-                             </CardActionArea>
+                             </CardActionArea> 
                         </Card>
-
+                
                     );
                 })}
             </section>
