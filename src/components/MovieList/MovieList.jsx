@@ -59,7 +59,7 @@ function MovieList() {
                                     image={movie.poster}
                                     alt={movie.title}                
                                      />
-                                <Typography sx={{ marginTop: 1 }}>
+                                <Typography sx={{ marginTop: 1, color: '#e8a217'}}>
                                     {movie.title}
                                 </Typography>
                              </CardActionArea> 
