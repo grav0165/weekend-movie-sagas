@@ -11,12 +11,22 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import {Paper} from '@mui/material';
 import { Box } from '@mui/material';
+import { Theme } from '@mui/material';
+import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@mui/material';
 
 
 function MovieList() {
 
     //importing useHistroy to move to history page
     const history = useHistory();
+
+    // Creating theme for MUI to use
+    const theme = createTheme({
+        typography:{
+            fontFamily: 'Helvetica'
+        }
+    })
 
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
@@ -41,7 +51,7 @@ function MovieList() {
                 {movies.map(movie => {
                     return (
                         
-               
+                        <ThemeProvider theme={theme}>
                         <Card key={movie.id} elevation={7} sx={{ width: '25%', height: '30%', minWidth: 300, padding: 2, margin: 2, backgroundColor: '#050505', color: 'white'}}>
                             <CardActionArea onClick={()=>handleCard(movie)}>              
                                 <CardMedia
@@ -49,12 +59,12 @@ function MovieList() {
                                     image={movie.poster}
                                     alt={movie.title}                
                                      />
-                                <Typography sx={{ marginTop: 1 font}}>
+                                <Typography sx={{ marginTop: 1 }}>
                                     {movie.title}
                                 </Typography>
                              </CardActionArea> 
                         </Card>
-                
+                </ThemeProvider>
                     );
                 })}
             </section>

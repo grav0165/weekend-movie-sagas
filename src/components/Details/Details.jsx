@@ -45,7 +45,7 @@ function Details() {
                             <img src={movieDetails[0]?.poster} />
                         </CardMedia>
                         <Typography sx={{ paddingBottom: 2}}>
-                            {movieDetails[0].title}
+                            {movieDetails[0]?.title}
                         </Typography>
                     </Card>
                     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginRight: 10 }}>
