@@ -52,7 +52,7 @@ function MovieList() {
                     return (
                         
                         <ThemeProvider theme={theme}>
-                        <Card key={movie.id} elevation={7} sx={{ width: '25%', height: '30%', minWidth: 300, padding: 2, margin: 2, backgroundColor: '#050505', color: 'white'}}>
+                        <Card key={movie.id} elevation={7} sx={{ width: '25%', height: '30%', minWidth: 250, padding: 2, margin: 2, backgroundColor: '#050505', color: 'white'}}>
                             <CardActionArea onClick={()=>handleCard(movie)}>              
                                 <CardMedia
                                     sx={{ height: 400 }}
