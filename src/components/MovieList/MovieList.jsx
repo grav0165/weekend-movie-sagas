@@ -46,7 +46,7 @@ function MovieList() {
 
     return (
         <div>
-            <h1>Movies in Your List</h1>
+            <h1>Your Movie List</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
