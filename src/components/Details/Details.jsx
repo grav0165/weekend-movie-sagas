@@ -83,7 +83,7 @@ function Details() {
                 </Box>
 
                 <Box sx={{ padding: 3 }}>
-                    <Button elevation={6} variant="contained" size="large" sx={{ backgroundColor: '#050505', color: '#e8a217' }} onClick={handleReturn}>Return</Button>
+                    <Button elevation={6} variant="contained" size="large" sx={{ backgroundColor: '#050505', color: '#e8a217' }} onClick={handleReturn}>Return to Main</Button>
                 </Box>
             </ThemeProvider>
         </div>
