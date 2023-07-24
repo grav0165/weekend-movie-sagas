@@ -48,7 +48,7 @@ function Details() {
             <ThemeProvider theme={theme}>
                 <Box sx={{ paddingTop: 10, marginLeft: 3 }}>
                     <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                        <Card elevation={6} sx={{ width: '90%', minWidth: 240, height: 350, display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 5, backgroundColor: '#050505' }}>
+                        <Card elevation={6} sx={{ width: '90%', minWidth: 240, height: 350, maxWidth: 500, display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 5, backgroundColor: '#050505' }}>
                             {/* Adding ? to all objects inside of details page, as some of the lag from requesting information
                             from the server was causing severe page breaks */}
                             <CardMedia
